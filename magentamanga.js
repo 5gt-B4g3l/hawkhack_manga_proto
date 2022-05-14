@@ -53,11 +53,11 @@ function playInterpolation() {
       vaePlayer.stop();
       return;
     }
-    // Music VAE requires quantized melodies, so quantize them first.
-    const star = mm.sequences.quantizeNoteSequence(SAD_BGM, 4);
-    const teapot = mm.sequences.quantizeNoteSequence(SAD_BGM2, 4);
+    // MusicVAE requires quantized melodies, quantize first.
+    const sad1 = mm.sequences.quantizeNoteSequence(SAD_BGM, 4);
+    const sad2 = mm.sequences.quantizeNoteSequence(SAD_BGM2, 4);
     music_vae
-    .interpolate([star, teapot], 4)
+    .interpolate([sad1, sad2], 4)
     .then((sample) => {
       const concatenated = mm.sequences.concatenate(sample);
       vaePlayer.start(concatenated);
